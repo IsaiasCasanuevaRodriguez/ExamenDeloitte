@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VentasAntojitosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="PedidosCliente">
+    <Key>
+      <PropertyRef Name="IdPedidosClientes" />
+    </Key>
+    <Property Name="IdPedidosClientes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="VentaHora" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityContainer Name="VentasAntojitosEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PedidosClientes" EntityType="Self.PedidosCliente" />
+    <FunctionImport Name="VentaAdd">
+      <Parameter Name="NombreProducto" Mode="In" Type="String" />
+      <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="Total" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="VentaGetAll" ReturnType="Collection(VentasAntojitosModel.VentaGetAll_Result)" />
+    <FunctionImport Name="PedidosAdd">
+      <Parameter Name="NombreProducto" Mode="In" Type="String" />
+      <Parameter Name="Cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="Total" Mode="In" Type="Decimal" />
+      <Parameter Name="IdProducto" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ProductoGetAll" ReturnType="Collection(VentasAntojitosModel.ProductoGetAll_Result)" />
+  </EntityContainer>
+  <ComplexType Name="VentaGetAll_Result">
+    <Property Type="String" Name="NombreProducto" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Cantidad" Nullable="true" />
+    <Property Type="Decimal" Name="Total" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="DateTime" Name="VentaHora" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ProductoGetAll_Result">
+    <Property Type="Int32" Name="IdProducto" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="0" />
+  </ComplexType>
+</Schema>

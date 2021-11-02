@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VentasAntojitosModelStoreContainer" CdmEntityContainer="VentasAntojitosEntities1">
+    <EntitySetMapping Name="PedidosClientes">
+      <EntityTypeMapping TypeName="VentasAntojitosModel.PedidosCliente">
+        <MappingFragment StoreEntitySet="PedidosClientes">
+          <ScalarProperty Name="IdPedidosClientes" ColumnName="IdPedidosClientes" />
+          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="VentaHora" ColumnName="VentaHora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="VentaAdd" FunctionName="VentasAntojitosModel.Store.VentaAdd" />
+    <FunctionImportMapping FunctionImportName="VentaGetAll" FunctionName="VentasAntojitosModel.Store.VentaGetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VentasAntojitosModel.VentaGetAll_Result">
+          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="VentaHora" ColumnName="VentaHora" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PedidosAdd" FunctionName="VentasAntojitosModel.Store.PedidosAdd" />
+    <FunctionImportMapping FunctionImportName="ProductoGetAll" FunctionName="VentasAntojitosModel.Store.ProductoGetAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VentasAntojitosModel.ProductoGetAll_Result">
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
